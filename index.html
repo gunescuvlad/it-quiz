@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>IT Technologies Quiz - 58 Questions</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding:20px; max-width:900px; margin:auto; }
+    .question { margin-bottom:1.5em; }
+    .question h3 { margin:0 0 0.5em; }
+    .options label { display:block; padding:6px; margin-bottom:4px; border-radius:4px; cursor:pointer; }
+    .correct {
+      background-color: #28a745 !important;
+      color: white !important;
+    }
+    .incorrect {
+      background-color: #dc3545 !important;
+      color: white !important;
+    }
+    .results { margin-top:20px; font-weight:bold; font-size:1.2em; }
+    button { padding:10px 20px; font-size:1em; }
+    input[type=text] { width:100%; padding:6px; margin-bottom:4px; box-sizing:border-box; }
+  </style>
+</head>
+<body>
+  <h1>IT Technologies Quiz (58 Questions)</h1>
+  <form id="quizForm"></form>
+  <button id="submitBtn" type="button">Submit</button>
+  <div class="results" id="results"></div>
+
+  <script>
+    // 1. Funcție Fisher–Yates pentru shuffle:
+    function shuffle(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+    }
+
+    const quizData = [
+        {
+    question: "If the AX register holds the value 0280h, which will be the value of AX after the following instruction SHL AX,1?",
+    options: { a: "0400h", b: "0104h", c: "0500h", d: "0300h", e: "0102h" },
+    correct: "c"
+  },
+  {
+    question: "The following ASM instruction: MOV [BX],[SI] is valid?",
+    options: { a: "Adevărat", b: "Fals" },
+    correct: "b"
+  },
+  {
+    question: "The following logical gate (two inputs and an inverter on the output) is called:",
+    options: { a: "ORNOT gate", b: "XNOR gate", c: "NOR gate", d: "XOR gate", e: "NAND gate" },
+    correct: "e"
+  },
+  {
+    question: "The initial values of the registers are: AX=0ECE, DI=0291, SI=4209. Which is the value of AX after the execution of the following ASM instructions: PUSH AX; MOV AX, SI; POP SI; PUSH AX; ADD AX, SI; POP DI",
+    free: true,
+    correct: "50D7"
+  },
+  
+  {
+    question: "Consider the message 1101011011 to be encoded and the generating polynomial G(x)=x⁴+x+1. Which is the binary message that will be transmitted?",
+    options: { a: "1101011011111", b: "1101011011110", c: "1101011011100", d: "11010110110011", e: "11010110110001" },
+    correct: "b"
+  },
+  {
+    question: "One bit (Binary digiT) is defined as:",
+    options: {
+      a: "the quantity of information gained by choosing one value from two equally probable values.",
+      b: "the quantity of information gained by choosing one value from three equally probable values.",
+      c: "the quantity of information gained by choosing a value from multiple equally probable values.",
+      d: "the quantity of information gained by choosing two values from two equally probable values.",
+      e: "the quantity of information gained by choosing one value from four equally probable values."
+    },
+    correct: "a"
+  },
+  {
+    question: "Which are the final values of the registers BX and DI after the execution of the following instructions? BX=1234h, DI=0123h, SI=4207h; PUSH BX; MOV BX, DI; POP SI; PUSH BX; ADD BX, SI; POP DI",
+    options: {
+      a: "BX=1357h and DI=0003h",
+      b: "BX=1367h and DI=0133h",
+      c: "BX=1357h and DI=0133h",
+      d: "BX=1257h and DI=0123h",
+      e: "BX=1357h and DI=0123h"
+    },
+    correct: "e"
+  },
+  {
+    question: "The following ASM instruction: MOV [BX+12], DI is valid?",
+    options: { a: "Adevărat", b: "Fals" },
+    correct: "a"
+  },
+  {
+    question: "The O (overflow) flag is modified after an arithmetic operation. True or false?",
+    options: { a: "Adevărat", b: "Fals" },
+    correct: "a"
+  },
+    
+  {
+    question: "The T (trap, trace) flag controls the possibility to respond to external events. True or false?",
+    options: { a: "Adevărat", b: "Fals" },
+    correct: "b"
+  },
+  {
+    question: "Let us consider the following received Hamming code at the destination: 1001010. Which of the following statements is true?",
+    options: {
+      a: "The Hamming message is received incorrectly, the error is on position 5.",
+      b: "The Hamming message is received incorrectly, the error is on position 3.",
+      c: "The Hamming message is received incorrectly, the error is on position 2.",
+      d: "The Hamming message is received correctly.",
+      e: "The Hamming message is received incorrectly, the error is on position 6."
+    },
+    correct: "b"
+  },
+  {
+    question: "Speaking about CPU, the cache memory is faster than the registers. True or false?",
+    options: { a: "Adevărat", b: "Fals" },
+    correct: "b"
+  },
+  {
+    question: "The barcode 2 of 5 uses a parity bit. True or false?",
+    options: { a: "Adevărat", b: "Fals" },
+    correct: "a"
+  },
+  {
+    question: "Which is the representation of the decimal digit 0 in 2 of 5 code (74 210 code)?",
+    options: { a: "01 001", b: "10 001", c: "11 000", d: "00 101", e: "00 111" },
+    correct: "c"
+  },
+  {
+    question: "Which is the value of the biasing constant that is added to the exponent in case of double precision, IEEE 754 floating point representation?",
+    options: { a: "1023", b: "127", c: "128", d: "16383", e: "1024" },
+    correct: "a"
+  },
+  {
+    question: "Which of the following are alphanumeric codes? (choose 2)",
+    options: { a: "EBCDIC", b: "Excess 3", c: "Aiken code", d: "Unicode", e: "Gray code" },
+    multi: true,
+    correct: ["a", "d"]
+  },
+  {
+    question: "In case of Flynn taxonomy, what does represent the MIMD acronym?",
+    options: {
+      a: "Many instructions operating to the same set of data",
+      b: "Many independent CPUs operating as parts of a bigger system",
+      c: "One instruction flow applied on several data sets in parallel",
+      d: "All von Neumann computers"
+    },
+    correct: "b"
+  },
+  {
+    question: "Which is the value of the decimal digit 5 in Gray code?",
+    options: { a: "0110", b: "0111", c: "0001", d: "0110", e: "1100" },
+    correct: "b"
+  },
+    {
+    question: "In case of the barcode 2 of 5, there are two special encodings for Start and Stop. True or false?",
+    options: { a: "Adevărat", b: "Fals" },
+    correct: "a"
+  },
+  {
+    question: "The P (parity) flag is zero if the result of an operation contains an even number of bits of 1. True or false?",
+    options: { a: "Adevărat", b: "Fals" },
+    correct: "b"
+  },
+  {
+    question: "In case of QR code, QR stands for:",
+    options: { a: "Quick Refine", b: "Quick Reply", c: "Quick Response", d: "Quirk Response", e: "Quirk Reply" },
+    correct: "c"
+  },
+  {
+    question: "Which are the companies that have developed the standard format for audio CD’s back in the 1980’s? (Choose 2)",
+    options: { a: "Phillips", b: "Sony", c: "Disney", d: "Microsoft", e: "IBM" },
+    multi: true,
+    correct: ["a","b"]
+  },
+  {
+    question: "Hexadecimal digit D has the following binary value:",
+    options: { a: "1101", b: "1010", c: "1111", d: "1000", e: "1011" },
+    correct: "a"
+  },
+  {
+    question: "Which is the value of –2 in complementary code, using 8 bits?",
+    options: { a: "0Fh", b: "EFh", c: "EEh", d: "FEh", e: "F0h" },
+    correct: "d"
+  },
+  {
+    question: "In case of the barcode 2 of 5, there are no special encodings for Start and Stop. True or false?",
+    options: { a: "True", b: "False" },
+    correct: "b"
+  },
+  {
+    question: "The following ASM instruction: MOV AX, BL is valid?",
+    options: { a: "True", b: "False" },
+    correct: "b"
+  },
+  {
+    question: "Let us consider the following received Hamming code at the destination: 0101011. Which of the following statements is true?",
+    options: {
+      a: "The Hamming message is received correctly.",
+      b: "The Hamming message is received incorrectly, the error is on position 2.",
+      c: "The Hamming message is received incorrectly, the error is on position 5.",
+      d: "The Hamming message is received incorrectly, the error is on position 7.",
+      e: "The Hamming message is received incorrectly, the error is on position 6."
+    },
+    correct: "d"
+  },
+ 
+  // Q31–Q40
+  {
+    question: "If the AX register holds the value 0080h, which will be the value of AX after the following instruction SHL AX,1?",
+    options: { a: "0104h", b: "0100h", c: "0020h", d: "0102h", e: "0000h" },
+    correct: "b"
+  },
+  {
+    question: "The binary message 110011110 was received at a destination after was encoded using the generating polynomial G(x)=x³+x+1. Was the message received correctly?",
+    options: { a: "Yes", b: "No" },
+    correct: "a"
+  },
+  {
+    question: "The binary message 11010110111111 was received at a destination after was encoded using the generating polynomial G(x)=x⁴+x+1. Was the message received correctly?",
+    options: { a: "Yes", b: "No" },
+    correct: "a"
+  },
+  {
+    question: "The octal value 64 has the following decimal value:",
+    options: { a: "40", b: "52", c: "56", d: "50", e: "54" },
+    correct: "b"
+  },
+  {
+    question: "Which is the linear (effective) address from the following segmented address: AFA0:A600? The result is in hexadecimal.",
+    options: { a: "BA0A0", b: "BA100", c: "CA000", d: "BA000", e: "BB000" },
+    correct: "d"
+  },
+  {
+    question: "The entropy of a system is minimum, when:",
+    options: {
+      a: "all the states of the system are equiprobable",
+      b: "all the states’ probabilities of the system are 1",
+      c: "one state has the probability of zero, others have the probability of 1",
+      d: "all the states’ probabilities of the system are 0",
+      e: "one state has the probability of 1, others have the probability of 0"
+    },
+    correct: "e"
+  },
+  {
+    question: "Which is the value of the decimal digit 9 in Gray code?",
+    options: { a: "0111", b: "0110", c: "1100", d: "0001", e: "1101" },
+    correct: "e"
+  },
+  {
+    question: "Which is the value of the biasing constant that is added to the exponent in case of extended real format, IEEE 754 floating point representation?",
+    options: { a: "1024", b: "1023", c: "128", d: "16383", e: "16384", f: "127" },
+    correct: "d"
+  },
+  {
+    question: "The O (overflow) flag is modified after an arithmetic operation. True or false?",
+    options: { a: "True", b: "False" },
+    correct: "a"
+  },
+  {
+    question: "Which is the number of the bits reserved for the characteristic in case of extended real format, IEEE 754 floating point representation?",
+    options: { a: "10", b: "16", c: "15", d: "8", e: "12" },
+    correct: "c"
+  },
+// Q41–Q50
+  {
+    question: "In case of Flynn taxonomy, what does represent the SIMD acronym?",
+    options: {
+      a: "All von Neumann computers",
+      b: "Many instructions operating to the same set of data",
+      c: "One instruction flow applied on several data sets in parallel",
+      d: "Many independent CPUs operating as parts of a bigger system"
+    },
+    correct: "c"
+  },
+  {
+    question: "Entropy is defined as:",
+    options: {
+      a: "as a number that represents different states of a physical system.",
+      b: "a measure for the values of a state of the physical systems.",
+      c: "a measure for the degree of uncertainty of a state of the physical systems."
+    },
+    correct: "c"
+  },
+  {
+    question: "For the Intel microprocessor, the length of the quadword format is:",
+    options: { a: "32 bits", b: "128 bits", c: "64 bits", d: "16 bits" },
+    correct: "c"
+  },
+  {
+    question: "For the Intel microprocessor, the length of the word format is:",
+    options: { a: "64 bits", b: "32 bits", c: "8 bits", d: "16 bits" },
+    correct: "d"
+  },
+  {
+    question: "Which is the Hamming code resulted by encoding decimal value 11 expressed in 8421 code?",
+    options: { a: "0100010", b: "1011011", c: "1111010", d: "0100101", e: "0110011" },
+    correct: "e"
+  },
+  {
+    question: "How many bits are used for BCD representation in case of the Intel microprocessor?",
+    options: { a: "32", b: "80", c: "64", d: "128", e: "16" },
+    correct: "b"
+  },
+  {
+    question: "Which is the Hamming code resulted by encoding decimal value 12 expressed in 8421 code?",
+    options: { a: "1011011", b: "1111010", c: "0100010", d: "0111100", e: "0100101" },
+    correct: "d"
+  },
+  {
+    question: "What does this symbol represent? ⎓ (AND gate with bubble)?",
+    options: { a: "NOT gate", b: "AND gate", c: "OR gate", d: "NAND gate", e: "NOR gate" },
+    correct: "d"
+  },
+  {
+    question: "Which is the representation of the decimal digit 2 in 2 of 5 code (74 210 code)?",
+    options: { a: "00 011", b: "10 101", c: "11 000", d: "10 100", e: "00 101" },
+    correct: "d"
+  },
+  {
+    question: "The T (trap, trace) flag can be used by the debugger programs to step through the program. True or false?",
+    options: { a: "True", b: "False" },
+    correct: "a"
+  },
+// Q51–Q58
+  {
+    question: "The initial values of the registers are: AX=1201h, BX=5452h, CX=0004h, DX=0224h. Which are the values of AX and BX after the following instructions? ADD AL, DL; SUB BX, CX; SHL AX, CL",
+    options: {
+      a: "AX=1201h and BX=2233h",
+      b: "AX=5288h and BX=544Eh",
+      c: "AX=6088h and BX=544Eh",
+      d: "AX=6288h and BX=545Eh",
+      e: "AX=2250h and BX=544Eh"
+    },
+    correct: "e"
+  },
+  
+  {
+    question: "AX=1280h, BX=0010h, CX=3C05h, DX=0100h; SHL AX, CL; NOT DX; XOR BX, DX. Which are AX and BX?",
+    options: {
+      a: "AX=0008h and BX=6666h",
+      b: "AX=5100h and BX=FEEFh",
+      c: "AX=5000h and BX=FEEFh",
+      d: "AX=500Ah and BX=FEEFh",
+      e: "AX=5000h and BX=FEFh"
+    },
+    correct: "c"
+  },
+  
+  {
+    question: "Hexadecimal digit E has the following binary value:",
+    options: { a: "1000", b: "1110", c: "1010", d: "1111", e: "1011" },
+    correct: "b"
+  },
+  
+  
+  {
+    question: "The binary value 101100 has the following decimal value:",
+    options: { a: "40", b: "42", c: "48", d: "44", e: "58" },
+    correct: "d"
+  }
+    ];
+
+    // amestecă ordinea întrebărilor
+    shuffle(quizData);
+
+    // 4. Generăm formularul cu opțiunile amestecate
+    const form = document.getElementById('quizForm');
+    quizData.forEach((item, idx) => {
+      const div = document.createElement('div');
+      div.className = 'question';
+      const h = document.createElement('h3');
+      h.innerText = `${idx + 1}. ${item.question}`;
+      div.appendChild(h);
+
+      if (item.free) {
+        const inp = document.createElement('input');
+        inp.type = 'text';
+        inp.name = `q${idx}`;
+        div.appendChild(inp);
+
+      } else {
+        const opts = document.createElement('div');
+        opts.className = 'options';
+
+        // 1. Extragem perechile [key, label]
+        const entries = Object.entries(item.options);
+        // 2. Le amestecăm
+        shuffle(entries);
+        // 3. Generăm input-urile pe baza ordinii amestecate
+        entries.forEach(([key, label]) => {
+          const lbl = document.createElement('label');
+          const inp = document.createElement('input');
+          inp.type = item.multi ? 'checkbox' : 'radio';
+          inp.name = `q${idx}`;
+          inp.value = key;
+          lbl.appendChild(inp);
+          lbl.appendChild(document.createTextNode(' ' + label));
+          opts.appendChild(lbl);
+        });
+
+        div.appendChild(opts);
+      }
+
+      form.appendChild(div);
+    });
+
+    // 5. Logica de evaluare și evidențiere
+    document.getElementById('submitBtn').onclick = () => {
+      let score = 0;
+
+      quizData.forEach((q, idx) => {
+        const inputs = form.querySelectorAll(`input[name=q${idx}]`);
+
+        if (q.free) {
+          const inp = form[`q${idx}`];
+          inp.classList.remove('correct', 'incorrect');
+          if (inp.value.trim().toUpperCase() === q.correct.toUpperCase()) {
+            inp.classList.add('correct');
+            score++;
+          } else {
+            inp.classList.add('incorrect');
+          }
+
+        } else if (q.multi) {
+          let userSel = [];
+          inputs.forEach(i => {
+            const lbl = i.parentElement;
+            lbl.classList.remove('correct', 'incorrect');
+            if (i.checked) userSel.push(i.value);
+            if (q.correct.includes(i.value)) lbl.classList.add('correct');
+            if (i.checked && !q.correct.includes(i.value)) lbl.classList.add('incorrect');
+          });
+          if (userSel.length === q.correct.length &&
+              userSel.every(v => q.correct.includes(v))) {
+            score++;
+          }
+
+        } else {
+          inputs.forEach(i => {
+            const lbl = i.parentElement;
+            lbl.classList.remove('correct', 'incorrect');
+            if (i.value === q.correct) {
+              lbl.classList.add('correct');
+              if (i.checked) score++;
+            } else if (i.checked) {
+              lbl.classList.add('incorrect');
+            }
+          });
+        }
+      });
+
+      document.getElementById('results').innerText =
+        `You answered correctly ${score}/${quizData.length}.`;
+    };
+  </script>
+</body>
+</html>
